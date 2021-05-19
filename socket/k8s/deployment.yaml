@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: socket
+  labels:
+    app: socket
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: socket
+  template:
+    metadata:
+      labels:
+        app: socket
+    spec:
+      containers:
+      - name: socket
+        image: 146.185.210.230:5000/socket:1.1.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_ADMIN
+          value: http://spring-admin/spring-admin
+        - name: spring.mvc.servlet.path
+          value: /socket

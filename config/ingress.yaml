@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: tofate
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /spring-admin
+        backend:
+          serviceName: spring-admin
+          servicePort: 80
+      - path: /socket
+        backend:
+          serviceName: socket
+          servicePort: 80
